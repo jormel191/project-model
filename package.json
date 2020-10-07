@@ -1,0 +1,16 @@
+{
+  "name": "u_test_youtube_cucumber",
+  "version": "1.0.0",
+  "description": "Practice Selenium with cucumber",
+  "main": "index.js",
+  "scripts": {
+    "report": "node index.js"
+  },
+
+  "author": "jormel",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "multiple-cucumber-html-reporter": "^1.18.0"
+  }
+}
