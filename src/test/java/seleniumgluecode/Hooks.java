@@ -11,6 +11,11 @@ import runner.browser_manager.DriverManager;
 import runner.browser_manager.DriverManagerFactory;
 import runner.browser_manager.DriverType;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
 
 public class Hooks {
 
@@ -18,10 +23,12 @@ public class Hooks {
     private DriverManager driverManager;
 
     @Before
-    public void setup(){
+    public void setup() throws IOException {
+        Properties prop= new Properties();
+        prop.load(new FileReader("config/config.properties"));
         driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
         driver = driverManager.getDriver();
-        driver.get("https://www.phptravels.net/home");
+        driver.get(prop.getProperty("url"));
         driver.manage().window().maximize();
     }
 
@@ -35,7 +42,6 @@ public class Hooks {
     }
 
     public static WebDriver getDriver(){
-
         return driver;
     }
 }

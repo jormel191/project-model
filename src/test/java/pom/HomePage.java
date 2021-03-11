@@ -1,11 +1,9 @@
 package pom;
 
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 
 
 import java.util.List;
@@ -13,32 +11,23 @@ import java.util.List;
 
 public class HomePage extends BasePage {
 
+    @FindBy(xpath = "//div[@class='dy-modal-contents']/div[1]")
+    private List<WebElement> PopUpSizeBtn;
 
-    private String titleHomePage = "PHPTRAVELS | Travel Technology Partner";
+    @FindBy(xpath = "//div[@class='dy-modal-contents']/div[1]")
+    private WebElement PopUpBtn;
 
-    @FindBy(xpath = "//a[contains(text(),'Flights')]")
-    private WebElement fligthBtnLocator;
+    @FindBy(xpath = "//input[@id='testId-SearchBar-Input']")
+    private WebElement searchInput;
 
-    @FindBy(xpath = "//div[@class='form-icon-left flightclass']//a[@class='chosen-single']")
-    private WebElement economyInputLocator;
+    @FindBy(className = "pod-subTitle")
+    private List<WebElement> productList;
 
-    @FindBy(id = "s2id_location_from")
-    private WebElement fromInputLocator;
+    @FindBy(xpath = "//div[@class='jsx-3342506598 cmr-icon-container']")
+    private List<WebElement> priceList;
 
-    @FindBy(id = "s2id_location_to")
-    private WebElement toInputLocator;
-
-    @FindBy(xpath = "//div[@class='row no-gutters row-reverse align-items-end']//div[4]")
-    private WebElement searchBtnLocator;
-
-    @FindBy(className = "select2-result-label")
-    private List<WebElement> option;
-
-    @FindBy(className = "select2-result-label")
-    private List<WebElement> options;
-
-    @FindBy(id = "FlightsDateStart")
-    private WebElement BirthDate;
+    @FindBy(className = "SearchBar-module_searchBtnIcon__VR3f5")
+    private WebElement searchBtn;
 
 
     public HomePage(WebDriver driver) {
@@ -46,54 +35,30 @@ public class HomePage extends BasePage {
 
     }
 
-    public boolean homePageIsDisplayed() throws Exception {
-
-        return this.getTitle().equals(titleHomePage);
+    public List<WebElement> getPopUpSizeBtn() {
+        return PopUpSizeBtn;
     }
 
-    public void clickOnfligth() throws Exception {
-
-        this.click(fligthBtnLocator);
+    public WebElement getPopUpBtn() {
+        return PopUpBtn;
     }
 
-    public boolean economyIsDisplayed() throws Exception {
+    public WebElement getSearchInput() {
+        return searchInput;
+    }
 
-        return this.isDisplayed(economyInputLocator);
+    public List<WebElement> getProductList() {
+        return productList;
+    }
+
+    public List<WebElement> getPriceList() {
+        return priceList;
+    }
+
+    public WebElement getSearchBtn() {
+        return searchBtn;
     }
 
 
-
-    public void selectFrom(String depart, String contains) throws Exception {
-        moveTo(depart, fromInputLocator);
-        for (int i = 0; i < option.size(); i++) {
-            String text = option.get(i).getText();
-            if (text.contains(contains)) {
-                click(option.get(i));
-                break;
-            }
-        }
-    }
-
-    public void selectTo(String arrive, String contains) throws Exception {
-        moveTo(arrive, toInputLocator);
-            for (int i = 0; i < options.size(); i++) {
-                String text = options.get(i).getText();
-                if (text.contains(contains)) {
-                    this.click(options.get(i));
-                    break;
-
-            }
-        }
-    }
-
-    public void selectDepart(String date) throws Exception {
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("return document.getElementById(\"FlightsDateStart\").removeAttribute('readonly',0);");
-        sendKeys(date, BirthDate);
-    }
-
-    public void clickSeach() throws Exception {
-        this.click(searchBtnLocator);
-    }
 
 }

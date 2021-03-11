@@ -6,7 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="project-model" />
         <module name="U_test_youtube_Cucumber" />
+        <module name="Test-PHPtravels" />
         <module name="Test-tata" />
       </profile>
     </annotationProcessing>

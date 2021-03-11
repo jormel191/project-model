@@ -8,7 +8,7 @@ public class ChromeDriverManager extends DriverManager{
     @Override
     public void createDriver(){
 
-        System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/chromedrive.exe");
+        System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
         driver = new ChromeDriver();
 
     }

@@ -7,7 +7,8 @@ import org.openqa.selenium.interactions.Actions;
 public class BasePage {
 
     protected WebDriver driver;
-    protected Actions action;
+    private Actions action;
+
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -42,7 +43,7 @@ public class BasePage {
 
     public void sendKeys(String inputText, WebElement element) throws Exception {
         try {
-            //     wait.until(ExpectedConditions.elementToBeClickable(element));
+            Thread.sleep(3000);
             element.sendKeys(inputText);
         } catch (Exception e) {
             throw new Exception("No se pudo encontrar el elemento");
@@ -52,9 +53,9 @@ public class BasePage {
 
     public void moveTo(String inputText, WebElement element) throws Exception {
         try {
-            //     wait.until(ExpectedConditions.elementToBeClickable(element));
-            action.moveToElement(element).click().sendKeys(inputText).build().perform();
             Thread.sleep(3000);
+            action.moveToElement(element).click().sendKeys(inputText).build().perform();
+
         } catch (Exception e) {
             throw new Exception("No se pudo mover el elemento");
         }
